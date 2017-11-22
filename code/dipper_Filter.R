@@ -5,7 +5,7 @@ library(nimble)
 
 ## define custom distribution
 dCJS2 <- nimbleFunction(
-    run = function(x = double(), length = double(), nSightingsMinus1 = double(), nNonSightings = double(), log_phi = double(), log_pp = double(), log_1minusP = double(), logChi = double(), log.p = double()) {
+    run = function(x = double(), length = double(), nSightingsMinus1 = double(), nNonSightings = double(), log_phi = double(), log_pp = double(), log_1minusP = double(), logChi = double(), log = double()) {
         logL <- length*log_phi + nSightingsMinus1*log_pp + nNonSightings*log_1minusP + logChi
         returnType(double())
         return(logL)

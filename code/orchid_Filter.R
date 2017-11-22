@@ -5,7 +5,7 @@ library(nimble)
 
 ## define custom distribution
 dDHMMorchid <- nimbleFunction(
-    run = function(x = double(1), length = double(), prior = double(1), Z = double(2), T = double(3), log.p = double()) {
+    run = function(x = double(1), length = double(), prior = double(1), Z = double(2), T = double(3), log = double()) {
         pi <- prior
         logL <- 0
         for(t in 1:length) {
@@ -31,7 +31,8 @@ registerDistributions(list(
     dDHMMorchid = list(
         BUGSdist = 'dDHMMorchid(length, prior, Z, T)',
         types = c('value = double(1)', 'length = double()', 'prior = double(1)', 'Z = double(2)', 'T = double(3)'),
-        discrete = TRUE
+        discrete = TRUE,
+        mixedSizes = TRUE
     )
 ))
 

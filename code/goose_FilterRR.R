@@ -5,7 +5,7 @@ library(nimble)
 
 ## define custom distribution
 dDHMM <- nimbleFunction(
-    run = function(x = double(1), length = double(), prior = double(1), condition = double(1), Z = double(3), useZt = double(), T = double(3), useTt = double(), mult = double(), log.p = double()) {
+    run = function(x = double(1), length = double(), prior = double(1), condition = double(1), Z = double(3), useZt = double(), T = double(3), useTt = double(), mult = double(), log = double()) {
         pi <- prior
         logL <- 0
         Zind <- 1
@@ -30,7 +30,7 @@ dDHMM <- nimbleFunction(
             }
         }
         returnType(double())
-        if(log.p) return(logL) else return(exp(logL))
+        if(log) return(logL) else return(exp(logL))
     }
 )
 
